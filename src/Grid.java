@@ -9,9 +9,9 @@ public class Grid {
         for (int i = 0; i < grideSize; i++){
             for (int j = 0; j < grideSize; j++) {
                 if (startingGrid[i][j] > 0 && startingGrid[i][j] <= grideSize){
-                    grid[i][j] = new Cell(startingGrid[i][j]);
+                    grid[i][j] = new Cell(startingGrid[i][j], i + 1, j + 1);
                 } else {
-                    grid[i][j] = new Cell();
+                    grid[i][j] = new Cell(i + 1, j + 1);
                 }
             }
         }
