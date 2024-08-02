@@ -1,5 +1,5 @@
 public class Main {
-    public static void Main(String[] args){
+    public static void main(String[] args){
 
         int[][] testGridValues = {
                 {1, 6, 0, 5, 0, 0, 0, 9, 8},
@@ -15,6 +15,10 @@ public class Main {
 
         Grid testGrid = new Grid(testGridValues);
 
-        System.out.println(testGrid.getBox(5));
+        Cell[] box5 = testGrid.getBox(1);
+
+        for (Cell cell: box5){
+            System.out.println(cell);
+        }
     }
 }

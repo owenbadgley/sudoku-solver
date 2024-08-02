@@ -47,4 +47,9 @@ public class Cell {
     public void setBoxValues(ArrayList<Integer> boxValues) {
         this.boxValues = boxValues;
     }
+
+    @Override
+    public String toString() {
+        return "value: " + trueValue;
+    }
 }

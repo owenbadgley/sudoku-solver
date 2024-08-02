@@ -9,17 +9,19 @@ public class Grid {
         for (int i = 0; i < grideSize; i++){
             for (int j = 0; j < grideSize; j++) {
                 if (startingGrid[i][j] > 0 && startingGrid[i][j] <= grideSize){
-                    grid[i][j].setTrueValue(startingGrid[i][j]);
+                    grid[i][j] = new Cell(startingGrid[i][j]);
+                } else {
+                    grid[i][j] = new Cell();
                 }
             }
         }
     }
 
     public Cell getCell(int row, int col){
-        return grid[row][col];
+        return grid[row - 1][col - 1];
     }
     public Cell[] getRow(int row){
-        return grid[row];
+        return grid[row - 1];
     }
 
     public Cell[] getCol(int col){
@@ -68,7 +70,7 @@ public class Grid {
         }
         for (int i = 0; i < 3; i++){
             for (int j = 0; j < 3; j++){
-                box[i + j] = grid[i + yOffSet][j + xOffSet];
+                box[3*i + j] = grid[i + xOffSet][j + yOffSet];
             }
         }
         return box;
