@@ -15,7 +15,7 @@ public class Main {
 
         Grid testGrid = new Grid(testGridValues);
 
-        Cell[] box5 = testGrid.getBox(1);
+        Cell[] box5 = testGrid.getCol(testGrid.getCell(6,4));
 
         for (Cell cell: box5){
             System.out.println(cell);

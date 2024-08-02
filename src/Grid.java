@@ -27,6 +27,7 @@ public class Grid {
     public Cell[] getRow(Cell cell){return getRow(cell.getRow());}
 
     public Cell[] getCol(int col){
+        col -= 1;
         Cell[] column = new Cell[grideSize];
         for (int i = 0; i < grideSize; i++){
             column[i] = grid[i][col];
