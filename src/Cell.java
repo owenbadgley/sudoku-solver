@@ -45,6 +45,13 @@ public class Cell {
         this.rowValues = rowValues;
     }
 
+    public void addRowValue(int rowValue){
+        this.rowValues.add(rowValue);
+    }
+    public void removeRowValue(int rowValue){
+        this.rowValues.remove(rowValue);
+    }
+
     public ArrayList<Integer> getColValues() {
         return colValues;
     }
@@ -52,7 +59,12 @@ public class Cell {
     public void setColValues(ArrayList<Integer> colValues) {
         this.colValues = colValues;
     }
-
+    public void addColValue(int colValue){
+        this.colValues.add(colValue);
+    }
+    public void removeColValue(int colValue){
+        this.colValues.remove(colValue);
+    }
 
     public ArrayList<Integer> getBoxValues() {
         return boxValues;
@@ -61,7 +73,12 @@ public class Cell {
     public void setBoxValues(ArrayList<Integer> boxValues) {
         this.boxValues = boxValues;
     }
-
+    public void addBoxValue(int boxValue){
+        this.boxValues.add(boxValue);
+    }
+    public void removeBoxValue(int boxValue){
+        this.boxValues.remove(boxValue);
+    }
     @Override
     public String toString() {
         return "value: " + trueValue;
