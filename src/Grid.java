@@ -24,12 +24,18 @@ public class Grid {
         return grid[row - 1];
     }
 
+    public Cell[] getRow(Cell cell){return getRow(cell.getRow());}
+
     public Cell[] getCol(int col){
         Cell[] column = new Cell[grideSize];
         for (int i = 0; i < grideSize; i++){
             column[i] = grid[i][col];
         }
         return column;
+    }
+
+    public Cell[] getCol(Cell cell){
+        return getCol(cell.getCol());
     }
 
     public Cell[] getBox(int boxNum) {
@@ -74,5 +80,34 @@ public class Grid {
             }
         }
         return box;
+    }
+
+    public Cell[] getBox(Cell cell){
+        if (cell.getCol() <= 3){
+            if (cell.getRow() <= 3){
+                return getBox(1);
+            } else if(cell.getRow() <= 6){
+                return getBox(2);
+            } else{
+                return getBox(3);
+            }
+        } else if (cell.getCol() <= 6) {
+            if (cell.getRow() <= 3){
+                return getBox(4);
+            } else if(cell.getRow() <= 6){
+                return getBox(5);
+            } else{
+                return getBox(6);
+            }
+        } else {
+            if (cell.getRow() <= 3){
+                return getBox(7);
+            } else if(cell.getRow() <= 6){
+                return getBox(8);
+            } else{
+                return getBox(9);
+            }
+        }
+
     }
 }
