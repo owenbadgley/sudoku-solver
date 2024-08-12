@@ -1,4 +1,5 @@
 import java.util.ArrayList;
+import java.util.Objects;
 
 public class Cell {
     private int trueValue = 0;
@@ -62,6 +63,12 @@ public class Cell {
     public void addColValue(int colValue){
         this.colValues.add(colValue);
     }
+
+    @Override
+    public String toString() {
+        return trueValue + " ";
+    }
+
     public void removeColValue(int colValue){
         this.colValues.remove(colValue);
     }
@@ -79,8 +86,17 @@ public class Cell {
     public void removeBoxValue(int boxValue){
         this.boxValues.remove(boxValue);
     }
+
     @Override
-    public String toString() {
-        return "value: " + trueValue;
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (!(o instanceof Cell cell)) return false;
+        return getTrueValue() == cell.getTrueValue();
     }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(getTrueValue());
+    }
+
 }

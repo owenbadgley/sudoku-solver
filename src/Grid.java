@@ -1,3 +1,6 @@
+import java.util.ArrayList;
+import java.util.Arrays;
+
 public class Grid {
     private final Cell[][] grid;
     int grideSize;
@@ -110,5 +113,50 @@ public class Grid {
             }
         }
 
+    }
+    public ArrayList<Integer> getBoxValues(Cell cell){
+        Cell[] boxValues = getBox(cell);
+        ArrayList<Integer> values = new ArrayList<>();
+
+        for (Cell c : boxValues){
+            if (c.getTrueValue() != 0){
+                values.add(c.getTrueValue());
+            }
+        }
+        return values;
+    }
+    public ArrayList<Integer> getRowValues(Cell cell){
+        Cell[] rowValues = getRow(cell);
+        ArrayList<Integer> values = new ArrayList<>();
+
+        for (Cell c : rowValues){
+            if (c.getTrueValue() != 0){
+                values.add(c.getTrueValue());
+            }
+        }
+        return values;
+    }
+    public ArrayList<Integer> getColValues(Cell cell){
+        Cell[] colValues = getCol(cell);
+        ArrayList<Integer> values = new ArrayList<>();
+
+        for (Cell c : colValues){
+            if (c.getTrueValue() != 0){
+                values.add(c.getTrueValue());
+            }
+        }
+        return values;
+    }
+
+    @Override
+    public String toString() {
+        StringBuilder gridPrint = new StringBuilder();
+        for (int i = 0; i < 9; i++){
+            for (int j = 0; j < 9; j++){
+                gridPrint.append(grid[i][j].getTrueValue()).append(" ");
+            }
+            gridPrint.append("\n");
+        }
+        return gridPrint.toString();
     }
 }
