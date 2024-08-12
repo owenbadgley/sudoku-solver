@@ -23,26 +23,26 @@ public class Grid {
     public Cell getCell(int row, int col){
         return grid[row - 1][col - 1];
     }
-    public Cell[] getRow(int row){
-        return grid[row - 1];
+    public ArrayList<Cell> getRow(int rowNum){
+        return new ArrayList<>(Arrays.asList(grid[rowNum]));
     }
 
-    public Cell[] getRow(Cell cell){return getRow(cell.getRow());}
+    public ArrayList<Cell> getRow(Cell cell){return getRow(cell.getRow());}
 
-    public Cell[] getCol(int col){
+    public ArrayList<Cell> getCol(int col){
         col -= 1;
-        Cell[] column = new Cell[grideSize];
+        ArrayList<Cell> column = new ArrayList<>();
         for (int i = 0; i < grideSize; i++){
-            column[i] = grid[i][col];
+            column.add(grid[i][col]);
         }
         return column;
     }
 
-    public Cell[] getCol(Cell cell){
+    public ArrayList<Cell> getCol(Cell cell){
         return getCol(cell.getCol());
     }
 
-    public Cell[] getBox(int boxNum) {
+    public ArrayList<Cell> getBox(int boxNum) {
         Cell[] box = new Cell[grideSize];
         int xOffSet = 0;
         int yOffSet = 0;
@@ -83,10 +83,10 @@ public class Grid {
                 box[3*i + j] = grid[i + xOffSet][j + yOffSet];
             }
         }
-        return box;
+        return new ArrayList<Cell>(Arrays.asList(box));
     }
 
-    public Cell[] getBox(Cell cell){
+    public ArrayList<Cell> getBox(Cell cell){
         if (cell.getCol() <= 3){
             if (cell.getRow() <= 3){
                 return getBox(1);
@@ -115,7 +115,7 @@ public class Grid {
 
     }
     public ArrayList<Integer> getBoxValues(Cell cell){
-        Cell[] boxValues = getBox(cell);
+        ArrayList<Cell> boxValues = getBox(cell);
         ArrayList<Integer> values = new ArrayList<>();
 
         for (Cell c : boxValues){
@@ -126,7 +126,7 @@ public class Grid {
         return values;
     }
     public ArrayList<Integer> getRowValues(Cell cell){
-        Cell[] rowValues = getRow(cell);
+        ArrayList<Cell> rowValues = getRow(cell);
         ArrayList<Integer> values = new ArrayList<>();
 
         for (Cell c : rowValues){
@@ -137,7 +137,7 @@ public class Grid {
         return values;
     }
     public ArrayList<Integer> getColValues(Cell cell){
-        Cell[] colValues = getCol(cell);
+        ArrayList<Cell> colValues = getCol(cell);
         ArrayList<Integer> values = new ArrayList<>();
 
         for (Cell c : colValues){
