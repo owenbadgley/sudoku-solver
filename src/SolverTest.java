@@ -32,6 +32,7 @@ class SolverTest {
     @Test
     void solveBoxNumber_numberSolvable() {
         solver.solveBoxNumber(4, 8);
+        System.out.println(solver.getGrid());
         assertEquals(new Cell(8, 1, 1), testGrid.getCell(2, 5));
     }
 
@@ -39,9 +40,29 @@ class SolverTest {
     void solveColNumber_numberAlreadySolved() {
         assertEquals(1, solver.solveColNumber(1, 1));
     }
+    @Test
+    void solveColNumber_numberSolvable(){
+        solver.solveColNumber(1, 6);
+        System.out.println(solver.getGrid());
+        assertEquals(new Cell(6, 1, 1), testGrid.getCell(7, 1));
+    }
 
     @Test
     void solveRowNumber_numberAlreadySolved() {
         assertEquals(1, solver.solveRowNumber(1, 9));
+    }
+
+    @Test
+    void solveRowNumber_numberSolvable(){
+        solver.solveRowNumber(1, 3);
+        System.out.println(solver.getGrid());
+        assertEquals(new Cell(3, 1, 1), testGrid.getCell(1, 5));
+    }
+
+    @Test
+    void solveDigit_solveAll() {
+        System.out.println(solver.solveDigit(1));
+        System.out.println(solver.getGrid());
+        assertTrue(solver.solveDigit(1));
     }
 }
