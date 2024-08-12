@@ -31,6 +31,17 @@ class SolverTest {
 
     @Test
     void solveBoxNumber_numberSolvable() {
-        assertEquals(2, solver.solveBoxNumber(4, 8));
+        solver.solveBoxNumber(4, 8);
+        assertEquals(new Cell(8, 1, 1), testGrid.getCell(2, 5));
+    }
+
+    @Test
+    void solveColNumber_numberAlreadySolved() {
+        assertEquals(1, solver.solveColNumber(1, 1));
+    }
+
+    @Test
+    void solveRowNumber_numberAlreadySolved() {
+        assertEquals(1, solver.solveRowNumber(1, 9));
     }
 }
