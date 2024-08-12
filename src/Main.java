@@ -20,5 +20,7 @@ public class Main {
         for (Cell cell: box5){
             System.out.println(cell);
         }
+
+        System.out.println(testGrid);
     }
 }
