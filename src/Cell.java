@@ -50,7 +50,7 @@ public class Cell {
         this.rowValues.add(rowValue);
     }
     public void removeRowValue(int rowValue){
-        this.rowValues.remove(rowValue);
+        this.rowValues.remove(Integer.valueOf(rowValue));
     }
 
     public ArrayList<Integer> getColValues() {
@@ -70,7 +70,7 @@ public class Cell {
     }
 
     public void removeColValue(int colValue){
-        this.colValues.remove(colValue);
+        this.colValues.remove(Integer.valueOf(colValue));
     }
 
     public ArrayList<Integer> getBoxValues() {
@@ -84,7 +84,7 @@ public class Cell {
         this.boxValues.add(boxValue);
     }
     public void removeBoxValue(int boxValue){
-        this.boxValues.remove(boxValue);
+        this.boxValues.remove(Integer.valueOf(boxValue));
     }
 
     @Override

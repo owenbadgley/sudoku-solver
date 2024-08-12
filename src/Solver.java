@@ -14,12 +14,17 @@ public class Solver {
     //using the other helper functions, attempts to solve the grid all at once, by traversing through the digits repeatedly.
     public boolean solve(){
         ArrayList<Integer> unsolvedDigits= new ArrayList<Integer>();
+        ArrayList<Integer> solvedDigits = new ArrayList<Integer>();
         for (int i = 1; i < 10; i++){
             unsolvedDigits.add(i);
         }
-
         while(!unsolvedDigits.isEmpty()){
-            unsolvedDigits.removeIf(this::solveDigit);
+            for (Integer i : unsolvedDigits){
+                if (solveDigit(i)){solvedDigits.add(i);}
+            }
+            for(Integer i : solvedDigits){
+                unsolvedDigits.remove(Integer.valueOf(i));
+            }
         }
         return true;
     }
@@ -52,6 +57,12 @@ public class Solver {
                     return 1;
                 }
             }
+        } else {
+            for (Cell cell : curBox){
+                if (cell.getBoxValues().contains(solveTarget)){
+                    cell.removeBoxValue(solveTarget);
+                }
+            }
         }
         return 0;
     }
@@ -79,6 +90,12 @@ public class Solver {
                 if (cell.getColValues().contains(solveTarget)){
                     cell.setTrueValue(solveTarget);
                     return 1;
+                }
+            }
+        }else {
+            for (Cell cell : curCol){
+                if (cell.getColValues().contains(solveTarget)){
+                    cell.removeColValue(solveTarget);
                 }
             }
         }
@@ -110,6 +127,12 @@ public class Solver {
                     return 1;
                 }
             }
+        }else {
+            for (Cell cell : curRow){
+                if (cell.getRowValues().contains(solveTarget)){
+                    cell.removeRowValue(solveTarget);
+                }
+            }
         }
         return 0;
     }
@@ -125,8 +148,7 @@ public class Solver {
                 solvedCount += solveRowNumber(i, digit);
                 solvedCount += solveColNumber(i, digit);
             }
-            System.out.println(solvedCount);
         } while (solvedCount > prevSolvedCount);
-        return solvedCount == 9 / 3;
+        return solvedCount == 27;
     }
 }
