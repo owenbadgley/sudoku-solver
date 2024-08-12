@@ -26,6 +26,11 @@ class SolverTest {
 
     @Test
     void solveBoxNumber_numberAlreadySolved() {
-        assertEquals(0, solver.solveBoxNumber(1, 1));
+        assertEquals(1, solver.solveBoxNumber(1, 1));
+    }
+
+    @Test
+    void solveBoxNumber_numberSolvable() {
+        assertEquals(2, solver.solveBoxNumber(4, 8));
     }
 }

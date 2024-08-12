@@ -1,3 +1,5 @@
+import java.util.ArrayList;
+
 public class Main {
     public static void main(String[] args){
 
@@ -15,12 +17,15 @@ public class Main {
 
         Grid testGrid = new Grid(testGridValues);
 
-        Cell[] box5 = testGrid.getCol(testGrid.getCell(6,4));
+        Solver solver = new Solver(testGrid);
+
+        ArrayList<Cell> box5 = testGrid.getCol(testGrid.getCell(6,4));
 
         for (Cell cell: box5){
             System.out.println(cell);
         }
 
         System.out.println(testGrid);
+        //solver.solveBox(1);
     }
 }

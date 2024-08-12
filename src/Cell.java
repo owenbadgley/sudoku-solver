@@ -90,6 +90,9 @@ public class Cell {
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;
+        if (o instanceof Integer){
+            return o.equals(getTrueValue());
+        }
         if (!(o instanceof Cell cell)) return false;
         return getTrueValue() == cell.getTrueValue();
     }
