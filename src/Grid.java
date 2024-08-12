@@ -24,7 +24,7 @@ public class Grid {
         return grid[row - 1][col - 1];
     }
     public ArrayList<Cell> getRow(int rowNum){
-        return new ArrayList<>(Arrays.asList(grid[rowNum]));
+        return new ArrayList<>(Arrays.asList(grid[rowNum - 1]));
     }
 
     public ArrayList<Cell> getRow(Cell cell){return getRow(cell.getRow());}
@@ -125,6 +125,17 @@ public class Grid {
         }
         return values;
     }
+    public ArrayList<Integer> getBoxValues(int i){
+        ArrayList<Cell> boxValues = getBox(i);
+        ArrayList<Integer> values = new ArrayList<>();
+
+        for (Cell c : boxValues){
+            if (c.getTrueValue() != 0){
+                values.add(c.getTrueValue());
+            }
+        }
+        return values;
+    }
     public ArrayList<Integer> getRowValues(Cell cell){
         ArrayList<Cell> rowValues = getRow(cell);
         ArrayList<Integer> values = new ArrayList<>();
@@ -136,8 +147,30 @@ public class Grid {
         }
         return values;
     }
+    public ArrayList<Integer> getRowValues(int i){
+        ArrayList<Cell> rowValues = getRow(i);
+        ArrayList<Integer> values = new ArrayList<>();
+
+        for (Cell c : rowValues){
+            if (c.getTrueValue() != 0){
+                values.add(c.getTrueValue());
+            }
+        }
+        return values;
+    }
     public ArrayList<Integer> getColValues(Cell cell){
         ArrayList<Cell> colValues = getCol(cell);
+        ArrayList<Integer> values = new ArrayList<>();
+
+        for (Cell c : colValues){
+            if (c.getTrueValue() != 0){
+                values.add(c.getTrueValue());
+            }
+        }
+        return values;
+    }
+    public ArrayList<Integer> getColValues(int i){
+        ArrayList<Cell> colValues = getCol(i);
         ArrayList<Integer> values = new ArrayList<>();
 
         for (Cell c : colValues){
